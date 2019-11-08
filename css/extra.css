@@ -1,0 +1,49 @@
+#prueba1{
+	width: 100%;
+}
+.container{
+    padding-left: 0px;
+    margin-left: 0;
+}
+
+.prueba img {
+	width: 30px;
+	margin-right: 10px;
+}
+
+body {
+  font-family: SF Pro Text;
+}
+
+.sidenav {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  background-color: #E6ECEB;
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 0px;
+}
+
+.sidenav a {
+  text-decoration: none;
+  font-size: 20px;
+  color: black;
+  display: block;
+  transition: 0.3s;
+}
+.prueba{
+	padding: 8px 8px 8px 32px;
+}
+.sidenav a:hover {
+  color: #B2387D;
+  background-color: #c3dbd7
+}
+
+
+#main-t span
+{
+	margin-right: 10px;
+}

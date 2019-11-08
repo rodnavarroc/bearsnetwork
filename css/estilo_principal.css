@@ -1,0 +1,89 @@
+#prueba1{
+	width: 100%;
+}
+.container{
+    padding-left: 0px;
+    margin-left: 0;
+}
+
+.prueba img {
+	width: 30px;
+	margin-right: 10px;
+}
+
+body {
+  font-family: SF Pro Text;
+}
+
+.sidenav {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  background-color: #E6ECEB;
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 0px;
+}
+
+.sidenav a {
+  text-decoration: none;
+  font-size: 20px;
+  color: black;
+  display: block;
+  transition: 0.3s;
+}
+.prueba{
+	padding: 8px 8px 8px 32px;
+}
+.sidenav a:hover {
+  color: #B2387D;
+  background-color: #c3dbd7
+}
+
+
+#main-t span{
+	margin-right: 10px;
+	color: lightgray;
+
+}
+
+#menu{
+	width: 50px;
+	margin: 0px;
+	float: left;
+}
+
+#menu{
+	font-size:30px;
+	cursor:pointer;
+}
+
+#bearsnetwork{
+	float: left;
+}
+
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+
+#est-miproy{
+	background-color: #7CDED3;
+	padding: 8px 8px 8px;
+}
+
+#est-config{
+	background-color: #BDB9AD;
+	padding: 8px 8px 8px;
+}
+
+#main {
+  transition: margin-left .5s;
+  padding: 16px;
+  width:50%;
+  height:50%;
+  float:left;
+}
+
