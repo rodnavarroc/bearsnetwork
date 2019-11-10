@@ -46,7 +46,7 @@
 	  <div class="row">
 		  <div class="col-sm">
 		    <center><h2 style="font-weight: lighter;">¿Aún no registrado/a?</h2></center><br>
-		    <center><form action=""><button type="submit" class="btn btn-outline-dark btn-lg text-dark">Empiece aquí</button></form></center>
+		    <center><form action=""><button type="submit" class="btn btn-outline-dark btn-lg">Empiece aquí</button></form></center>
 		  </div>
 	  </div>
 </div>
