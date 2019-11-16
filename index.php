@@ -3,9 +3,16 @@
 <head>
 	<title>Bears Network | Inicio</title>
 	<meta charset="utf-8">
-	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+    
+	<link type="text/css" rel="stylesheet" href="css/bootstrap.min.css" />
+	<link type="text/css" rel="stylesheet" href="css/bootstrap-vue.min.css" />
+	<link rel="stylesheet" type="text/css" href="css/estilo_principal.css" />
+
 	<script src="js/vue.min.js"></script>
+	<script src="js/bootstrap-vue.min.js"></script>
 	<script src="js/vue-router.js"></script>
+	<script src="js/lateral_izq.js"></script>
+	
 </head>
 <body>
 
@@ -46,7 +53,7 @@
 	  <div class="row">
 		  <div class="col-sm">
 		    <center><h2 style="font-weight: lighter;">¿Aún no registrado/a?</h2></center><br>
-		    <center><form action=""><button type="submit" class="btn btn-outline-dark btn-lg">Empiece aquí</button></form></center>
+		    <center><form action=""><button type="submit" class="btn btn-outline-dark btn-lg text-dark">Empiece aquí</button></form></center>
 		  </div>
 	  </div>
 </div>

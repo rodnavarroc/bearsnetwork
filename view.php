@@ -3,11 +3,16 @@
 <head>
 	<title>Bears Network</title>
 	<meta charset="utf-8">
-	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+    
+	<link type="text/css" rel="stylesheet" href="css/bootstrap.min.css" />
+	<link type="text/css" rel="stylesheet" href="css/bootstrap-vue.min.css" />
+	<link rel="stylesheet" type="text/css" href="css/estilo_principal.css" />
+
 	<script src="js/vue.min.js"></script>
+	<script src="js/bootstrap-vue.min.js"></script>
 	<script src="js/vue-router.js"></script>
-	<link rel="stylesheet" type="text/css" href="css/estilo_principal.css">
 	<script src="js/lateral_izq.js"></script>
+
 </head>
 <body>
 
@@ -28,10 +33,10 @@
 	<div id="app2" class="container">
 		<div id="mySidenav" class="sidenav">
 			<center><a id ="est-miproy" href="#">Mi Proyecto</a></center>
-			<a class = "prueba" href="#"> <img src ="img/overview.png" class="img-fluid">Vista general</a>
-			<a class = "prueba" href="#"> <img src ="img/tablero.png" class="img-fluid">Tablero</a>
-			<a class = "prueba" href="#"> <img src ="img/repo.png" class="img-fluid">Repositorio</a>
-			<span onclick="openNav()"><router-link to="/msj" class = "prueba"><img src ="img/queries.png" class="img-fluid">Consultas</router-link></span>
+			<span onclick="openNav()"><router-link to="/general" class = "prueba"><img src ="img/overview.png" class="img-fluid">Vista general</router-link></span>
+			<span onclick="openNav()"><router-link to="/tablero" class = "prueba"><img src ="img/tablero.png" class="img-fluid">Tablero</router-link></span>
+			<span onclick="openNav()"><router-link to="/repo_proyecto" class = "prueba"><img src ="img/repo.png" class="img-fluid">Repositorio</router-link></span>
+			<span onclick="openNav()"><router-link to="/consultas" class = "prueba"><img src ="img/queries.png" class="img-fluid">Consultas</router-link></span>
 			<hr>
 			<a class = "prueba" href="#"> <img src ="img/config.png" class="img-fluid">Configuración</a>
 		</div>
@@ -51,7 +56,7 @@
 			<br>
 		</div>
 
-		<div class="col-lg-2 align-self-end" style="background-color: #f2f2f2; padding: 0% 1%;">
+		<div class="col-lg-2" style="background-color: #f2f2f2; padding: 0% 1%;">
 			<br><br>
 			<center><img src="img/perfil.png" class="img-fluid" width="50%;"></center>
 			<br>
@@ -63,11 +68,14 @@
 			<h5><center><router-link to="/msj">Mensajes</router-link></center></h5><br>
 			<h5><center><router-link to="/repo">Mi repositorio</router-link></center></h5><br>
 
-			<br><br>
+				<br><br>
+			</div>
 		</div>
 	</div>
-</div>
 
-<script src="js/app.js"></script>
+<?php 
+include('js/app.php');
+?>
+
 </body>
 </html>
