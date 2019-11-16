@@ -20,7 +20,7 @@
   <a class="navbar-brand" href="#">Bears Network</a>
 </nav>
 
-<div class="container" style="padding-top: 3%;">
+<div id="app2" class="container" style="padding-top: 3%;">
 
 	<div class="row">
 		<div class="col-sm">
@@ -53,7 +53,33 @@
 	  <div class="row">
 		  <div class="col-sm">
 		    <center><h2 style="font-weight: lighter;">¿Aún no registrado/a?</h2></center><br>
-		    <center><form action=""><button type="submit" class="btn btn-outline-dark btn-lg text-dark">Empiece aquí</button></form></center>
+		    <center><b-button class="btn btn-lg btn-outline-dark bg-light text-dark" v-b-modal.rg-modal-1>Empiece aquí</b-button></center>
+
+		    <b-modal id="rg-modal-1" title="Registrar nueva cuenta" hide-footer="true">
+								<form action="xd.php">
+									<div class="form-group">
+										<label>Nombre completo</label>
+										<input id="nombre" type="text" class="form-control" type="text" placeholder="Juan Pérez" required="true">
+									</div>
+									<div class="form-group">
+										<label>Correo electrónico</label>
+										<input id="password" type="email" class="form-control" type="text" placeholder="" required="true">
+									</div>
+									<div class="form-group">
+										<label>Contraseña</label>
+										<input id="password" type="password" class="form-control" type="text" placeholder="" required="true">
+									</div>
+									<div class="form-group">
+										<label>Afiliación (universidad, facultad o empresa)</label>
+										<input id="afiliacion" type="text" class="form-control" type="text" placeholder="UANL" required="true">
+									</div>
+									<div class="form-group">
+									    <label for="exampleFormControlFile1">Subir foto de perfil</label>
+									    <input type="file" class="form-control-file" id="exampleFormControlFile1">
+									  </div>
+									<center><button type="submit" class="btn btn-outline-primary">Crear</button></center>
+								</form>
+							</b-modal>
 		  </div>
 	  </div>
 </div>
@@ -64,5 +90,10 @@
 </div>
 
 <br><br>
+
+<?php 
+include('js/app.php');
+?>
+
 </body>
 </html>

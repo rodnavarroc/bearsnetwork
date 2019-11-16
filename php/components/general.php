@@ -54,17 +54,29 @@
 									<tr>
 										<td>Rodolfo Navarro</td>
 										<td>Facultad de Ingeniería Mecánica y Eléctrica</td>
-										<td><center><button class="btn btn-outline-danger bg-light text-dark" onclick="">Eliminar miembro</button></center></td>
+										<td><center><button class="btn btn-outline-danger" onclick="">Eliminar miembro</button></center></td>
 									</tr>
 									<tr>
 										<td>David Reyes</td>
 										<td>Facultad de Ingeniería Mecánica y Eléctrica</td>
-										<td><center><button class="btn btn-outline-danger bg-light text-dark" onclick="">Eliminar miembro</button></center></td>
+										<td><center><button class="btn btn-outline-danger" onclick="">Eliminar miembro</button></center></td>
 									</tr>
 								</tbody>
 							</table>		
 						</div>
 					</div>
+
+					<br><center><b-button class="btn btn-outline-dark bg-light text-dark" v-b-modal.memb-modal-1>Agregar miembro al equipo</b-button></center>
+
+						<b-modal id="memb-modal-1" title="Nuevo miembro" hide-footer="true">
+								<form action="xd.php">
+									<div class="form-group">
+										<label>Correo electrónico</label>
+										<input id="mail" type="email" class="form-control" type="text" placeholder="" required="true">
+									</div>
+									<center><button type="submit" class="btn btn-outline-primary">Añadir al equipo</button></center>
+								</form>
+							</b-modal>
 				</div>
 
 			</div>
