@@ -2,6 +2,11 @@
 	width: 100%;
 }
 
+.container{
+  padding-left: 0px;
+  margin-left: auto;
+}
+
 .prueba img {
 	width: 30px;
 	margin-right: 10px;
