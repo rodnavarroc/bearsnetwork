@@ -1,3 +1,6 @@
+<?php
+    include 'php/functions/sessions.php';
+?>  
 <!DOCTYPE html>
 <html>
 <head>
@@ -67,6 +70,7 @@
 			<h5><center><router-link to="/notif">Notificaciones</router-link></center></h5><br>
 			<h5><center><router-link to="/msj">Mensajes</router-link></center></h5><br>
 			<h5><center><router-link to="/repo">Mi repositorio</router-link></center></h5><br>
+			<h5><center><a href="index.php?cerrar_sesion=true">Cerrar sesion</a></center></h5><br>
 
 				<br><br>
 			</div>

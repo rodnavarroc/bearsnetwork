@@ -1,3 +1,15 @@
+<?php
+    session_start();
+
+    if(isset($_GET['cerrar_sesion'])) {
+        $_SESSION = array();
+    } 
+
+    if($_SESSION['login'] === true) {
+        header('Location:view.php');
+    }
+    
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -31,10 +43,10 @@
 		<div class="row">
 		    <div class="col-sm text-dark" style="padding: 2% 10%;">
 		      	<br><h3>Iniciar Sesión</h3>
-		      	<form action="">
+		      	<form id="formulario_login" method="post">
 				  <div class="form-group">
-				    <label for="exampleInputEmail1">Nombre de usuario</label>
-				    <input type="text" class="form-control" id="usuario" placeholder="Usuario">
+				    <label for="exampleInputEmail1">Correo</label>
+				    <input type="text" class="form-control" id="email" placeholder="Correo">
 				  </div>
 				  <div class="form-group">
 				    <label for="exampleInputPassword1">Contraseña</label>
@@ -49,37 +61,37 @@
 	  			<center><img src="img/tought.png" class="img-fluid" width="100%;"></center>
 	  		</div>
 	  </div>
-
+	  
 	  <div class="row">
 		  <div class="col-sm">
 		    <center><h2 style="font-weight: lighter;">¿Aún no registrado/a?</h2></center><br>
-		    <center><b-button class="btn btn-lg btn-outline-dark bg-light text-dark" v-b-modal.rg-modal-1>Empiece aquí</b-button></center>
+		    <center><b-button id="signupButton" class="btn btn-lg btn-outline-dark bg-light text-dark" v-b-modal.rg-modal-1>Empiece aquí</b-button></center>
 
 		    <b-modal id="rg-modal-1" title="Registrar nueva cuenta" hide-footer="true">
-								<form action="xd.php">
-									<div class="form-group">
-										<label>Nombre completo</label>
-										<input id="nombre" type="text" class="form-control" type="text" placeholder="Juan Pérez" required="true">
-									</div>
-									<div class="form-group">
-										<label>Correo electrónico</label>
-										<input id="password" type="email" class="form-control" type="text" placeholder="" required="true">
-									</div>
-									<div class="form-group">
-										<label>Contraseña</label>
-										<input id="password" type="password" class="form-control" type="text" placeholder="" required="true">
-									</div>
-									<div class="form-group">
-										<label>Afiliación (universidad, facultad o empresa)</label>
-										<input id="afiliacion" type="text" class="form-control" type="text" placeholder="UANL" required="true">
-									</div>
-									<div class="form-group">
-									    <label for="exampleFormControlFile1">Subir foto de perfil</label>
-									    <input type="file" class="form-control-file" id="exampleFormControlFile1">
-									  </div>
-									<center><button type="submit" class="btn btn-outline-primary">Crear</button></center>
-								</form>
-							</b-modal>
+				<form id="formulario_registro" method="post">
+					<div class="form-group">
+						<label>Nombre completo</label>
+						<input id="usuario_registro" name="nombre" type="text" class="form-control" type="text" placeholder="Juan Pérez" required="true">
+					</div>
+					<div class="form-group">
+						<label>Correo electrónico</label>
+						<input id="email_registro" name="email" type="email" class="form-control" type="text" placeholder="" required="true">
+					</div>
+					<div class="form-group">
+						<label>Contraseña</label>
+						<input id="password_registro" name="password" type="password" class="form-control" type="text" placeholder="" required="true">
+					</div>
+					<div class="form-group">
+						<label>Afiliación (universidad, facultad o empresa)</label>
+						<input id="afiliacion_registro" name="afiliacion" type="text" class="form-control" type="text" placeholder="UANL" required="true">
+					</div>
+					<div class="form-group">
+						<label for="exampleFormControlFile1">Subir foto de perfil</label>
+						<input type="file" name="image" class="form-control-file" id="exampleFormControlFile1">
+					</div>
+					<center><button type="submit" class="btn btn-outline-primary">Crear</button></center>
+				</form>
+			</b-modal>
 		  </div>
 	  </div>
 </div>
@@ -94,6 +106,7 @@
 <?php 
 include('js/app.php');
 ?>
-
+<script src="js/sweetalert2.all.min.js"></script>
+<script src="js/formulario.js"></script>
 </body>
 </html>
