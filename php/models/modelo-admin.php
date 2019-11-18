@@ -9,6 +9,12 @@ date_default_timezone_set("America/Mexico_City");
 $fecha = date('Y-m-d H:i:s');
 $organization = $_POST['organization'];
 
+$opciones = array(
+    'cost' => 12
+);
+
+$hash_password = password_hash($password, PASSWORD_BCRYPT, $opciones);
+
 if($accion === 'crear') {
 
     $img_nombre_tmp = $_FILES['imagen']['tmp_name']; //Nombre temporal de la img
@@ -93,7 +99,10 @@ if($accion === 'login') {
                 $respuesta = array(
                     'respuesta' => 'correcto',
                     'nombre' => $name_usuario,
-                    'tipo' => $accion
+                    'tipo' => $accion,
+                    'id' => $id_usuario,
+                    'pass1' => $hash_password,
+                    'passDB' => $password_usuario
                 );
             } else {
                 //Login incorrecto, enviar error

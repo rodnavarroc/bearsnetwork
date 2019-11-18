@@ -4,7 +4,7 @@ function usuario_autenticado() {
     if(!revisar_usuario() ) {
         header('Location:index.php');
         exit();
-    }
+    } 
 }
 
 function revisar_usuario() {

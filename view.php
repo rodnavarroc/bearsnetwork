@@ -55,9 +55,9 @@
 			<router-view></router-view>
 		</div>
 
-		<div class="d-block d-sm-block d-md-none">
+		<!-- <div class="d-block d-sm-block d-md-none">
 			<br>
-		</div>
+		</div> -->
 
 		<div class="col-lg-2" style="background-color: #f2f2f2; padding: 0% 1%;">
 			<br><br>
@@ -69,7 +69,7 @@
 
 			<h5><center><router-link to="/notif">Notificaciones</router-link></center></h5><br>
 			<h5><center><router-link to="/msj">Mensajes</router-link></center></h5><br>
-			<h5><center><router-link to="/repo">Mi repositorio</router-link></center></h5><br>
+			<h5><center><router-link id="goToRepositorio" to="/repo">Mi repositorio</router-link></center></h5><br>
 			<h5><center><a href="index.php?cerrar_sesion=true">Cerrar sesion</a></center></h5><br>
 			<br><br>
 		</div>
@@ -79,6 +79,7 @@
 <?php 
 include('js/app.php');
 ?>
-
+<script src="js/sweetalert2.all.min.js"></script>
+<script src="js/formulario_view.js"></script>
 </body>
 </html>

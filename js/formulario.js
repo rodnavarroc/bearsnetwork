@@ -36,7 +36,7 @@ function validarRegistro(e) {
     } else {
         //Una vez se hicieron las validaciones, comenzar con nuestra peticion ajax
         //Datos que se envian al servidor
-        var datos = new FormData();
+        const datos = new FormData();
         datos.append('usuario', nombre);
         datos.append('nickname', nickname);
         datos.append('email', email);
@@ -46,7 +46,7 @@ function validarRegistro(e) {
         datos.append('imagen', imagen);
         
         //Crear el llamado a ajax
-        var xhr = new XMLHttpRequest();
+        const xhr = new XMLHttpRequest();
 
         //Abrir la conexion
         xhr.open('POST', 'php/models/modelo-admin.php', true);
@@ -54,7 +54,7 @@ function validarRegistro(e) {
         //Cargar la informacion
         xhr.onload = function() {
             if(this.status === 200) {
-                var respuesta = JSON.parse(xhr.responseText);
+                const respuesta = JSON.parse(xhr.responseText);
                 //Si la respuesta es correcta
                 console.log(respuesta);
                 if(respuesta.respuesta === 'correcto') {
@@ -97,7 +97,7 @@ function validarRegistro(e) {
 function login(e) {
     e.preventDefault();
     console.log("submit");
-    var nickname = document.querySelector('#nickname').value,
+    const nickname = document.querySelector('#nickname').value,
         password = document.querySelector('#password').value;
 
     if(nickname === '' || password === '') {
@@ -109,13 +109,13 @@ function login(e) {
     } else {
         //Ambos campos son correctos, mandar ejecutar ajax
         //Datos que se envian al servidor
-        var datos = new FormData();
+        const datos = new FormData();
         datos.append('nickname', nickname)
         datos.append('password', password);
         datos.append('accion', 'login');
         
         //Crear el llamado a ajax
-        var xhr = new XMLHttpRequest();
+        const xhr = new XMLHttpRequest();
 
         //Abrir la conexion
         xhr.open('POST', 'php/models/modelo-admin.php', true);
@@ -123,7 +123,7 @@ function login(e) {
         //Cargar la informacion
         xhr.onload = function() {
             if(this.status === 200) {
-                var respuesta = JSON.parse(xhr.responseText);
+                const respuesta = JSON.parse(xhr.responseText);
                 console.log(respuesta);
                 //Si la respuesta es correcta
                 if(respuesta.respuesta === 'correcto') {
