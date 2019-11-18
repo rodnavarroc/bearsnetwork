@@ -1,17 +1,23 @@
 <?php
 
 $accion = $_POST['accion'];
+$nickname = $_POST['nickname'];
 $password = $_POST['password'];
 $usuario = $_POST['usuario'];
 $email = $_POST['email'];
 date_default_timezone_set("America/Mexico_City");
 $fecha = date('Y-m-d H:i:s');
 $organization = $_POST['organization'];
-$imagen = 'imagen.png';
 
 if($accion === 'crear') {
-    //codigo para crear los administradores 
 
+    $img_nombre_tmp = $_FILES['imagen']['tmp_name']; //Nombre temporal de la img
+    $fullName = explode(".", $_FILES['imagen']['name']); //Separa el nombre del formato
+    $_FILES['imagen']['name'] = 'img_profile.' . $fullName[1]; //Se cambia el nombre y se mantiene el formato
+    $imagen = $_FILES['imagen']['name']; //Nombre permanente
+    
+
+    //codigo para crear los administradores 
     //Hashear passwords
     $opciones = array(
         'cost' => 12
@@ -22,11 +28,12 @@ if($accion === 'crear') {
     //Importar la conexion
     include_once('../functions/db_connection.php');
    
+    
 
     try{
         //Realizar la consulta a la base de datos
-        $stmt = $conn->prepare(" CALL agregarUsuario(?, ?, ?, ?, ?, ?); ");
-        $stmt->bind_param("ssssss", $usuario, $hash_password, $email, $fecha, $organization, $imagen);
+        $stmt = $conn->prepare(" CALL agregarUsuario(?,?,?,?,?,?,?) ");
+        $stmt->bind_param("sssssss", $usuario, $nickname, $hash_password, $email, $fecha, $organization, $imagen);
         $stmt->execute();
 
         if($stmt->affected_rows > 0) {
@@ -35,6 +42,9 @@ if($accion === 'crear') {
                 'Filas afectadas' => $stmt->affected_rows,
                 'tipo' => $accion
             );
+            $miCarpeta = "../../users/" . $nickname;
+            mkdir($miCarpeta, 0777); //Crear carpeta del usuario
+            move_uploaded_file($img_nombre_tmp, $miCarpeta . '/' . $imagen); //Mover archivo al servidor
         } else {
             $respuesta = array(
                 'respuesta' => 'error'
@@ -47,7 +57,7 @@ if($accion === 'crear') {
         $respuesta = array(
             'pass' => $e->getMessage()
         );
-    } 
+    }
     
     echo json_encode($respuesta);
 
@@ -58,11 +68,11 @@ if($accion === 'login') {
     include_once('../functions/db_connection.php');
 
     try {
-        $stmt = $conn->prepare("SELECT id, email, password FROM user WHERE email = ? ");
-        $stmt->bind_param('s', $email);
+        $stmt = $conn->prepare("SELECT id, nickname, email, password, name, image FROM user INNER JOIN profile ON user.id = profile.user_id WHERE nickname = ? ");
+        $stmt->bind_param('s', $nickname);
         $stmt->execute();
 
-        $stmt->bind_result($id_usuario, $email_usuario, $password_usuario);
+        $stmt->bind_result($id_usuario, $nickname_usuario,$email_usuario, $password_usuario, $name_usuario, $imagen);
         $stmt->fetch();
 
         if($email_usuario){
@@ -70,14 +80,17 @@ if($accion === 'login') {
             if(password_verify($password, $password_usuario)) {
                 //Iniciar la sesion
                 session_start();
+                $_SESSION['nickname'] = $nickname_usuario;
+                $_SESSION['name'] = $name_usuario;
                 $_SESSION['email'] = $email_usuario;
                 $_SESSION['id'] = $id_usuario;
+                $_SESSION['image'] = $imagen_usuario;
                 $_SESSION['login'] = true;
 
                 //Login correcto
                 $respuesta = array(
                     'respuesta' => 'correcto',
-                    'nombre' => $email_usuario,
+                    'nombre' => $name_usuario,
                     'tipo' => $accion
                 );
             } else {
@@ -106,5 +119,4 @@ if($accion === 'login') {
     echo json_encode($respuesta);
 }
 
-
-?>
+?> 

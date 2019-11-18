@@ -45,8 +45,8 @@
 		      	<br><h3>Iniciar Sesión</h3>
 		      	<form id="formulario_login" method="post">
 				  <div class="form-group">
-				    <label for="exampleInputEmail1">Correo</label>
-				    <input type="text" class="form-control" id="email" placeholder="Correo">
+				    <label for="exampleInputEmail1">Nombre de usuario</label>
+				    <input type="text" class="form-control" id="nickname" placeholder="Nombre de usuario">
 				  </div>
 				  <div class="form-group">
 				    <label for="exampleInputPassword1">Contraseña</label>
@@ -68,10 +68,14 @@
 		    <center><b-button id="signupButton" class="btn btn-lg btn-outline-dark bg-light text-dark" v-b-modal.rg-modal-1>Empiece aquí</b-button></center>
 
 		    <b-modal id="rg-modal-1" title="Registrar nueva cuenta" hide-footer="true">
-				<form id="formulario_registro" method="post">
+				<form id="formulario_registro" method="post" enctype="multipart/form-data">
 					<div class="form-group">
 						<label>Nombre completo</label>
 						<input id="usuario_registro" name="nombre" type="text" class="form-control" type="text" placeholder="Juan Pérez" required="true">
+					</div>
+					<div class="form-group">
+						<label>Nombre de usuario</label>
+						<input id="nickname_registro" name="nickname" type="text" class="form-control" type="text" placeholder="" required="true">
 					</div>
 					<div class="form-group">
 						<label>Correo electrónico</label>
@@ -87,7 +91,7 @@
 					</div>
 					<div class="form-group">
 						<label for="exampleFormControlFile1">Subir foto de perfil</label>
-						<input type="file" name="image" class="form-control-file" id="exampleFormControlFile1">
+						<input type="file" name="image" class="form-control-file" id="imagen" accept="image/*">
 					</div>
 					<center><button type="submit" class="btn btn-outline-primary">Crear</button></center>
 				</form>

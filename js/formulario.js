@@ -11,15 +11,17 @@ function revelarRegistro(e){
 
 function validarRegistro(e) {
     e.preventDefault();
-    console.log("submit");
+    
    //Obtenemos valores del formulario
-    var nombre = document.querySelector('#usuario_registro').value,
-        email = document.querySelector('#email_registro').value,
-        password = document.querySelector('#password_registro').value,
-        organization = document.querySelector('#afiliacion_registro').value,
-        accion = "crear";
+    const nombre = document.querySelector('#usuario_registro').value,
+          nickname = document.querySelector('#nickname_registro').value,
+          email = document.querySelector('#email_registro').value,
+          password = document.querySelector('#password_registro').value,
+          organization = document.querySelector('#afiliacion_registro').value,
+          imagen = document.querySelector('#imagen').files[0],
+          accion = "crear";
 
-    if(nombre === '' || password === '' || email === '' || organization === '') {//Validamos que los campos no esten vacios
+    if(nombre === '' || nickname === '' || password === '' || email === '' || organization === '') {//Validamos que los campos no esten vacios
         swal({
             type: 'error',
             title: 'Campos vacíos',
@@ -36,10 +38,12 @@ function validarRegistro(e) {
         //Datos que se envian al servidor
         var datos = new FormData();
         datos.append('usuario', nombre);
+        datos.append('nickname', nickname);
         datos.append('email', email);
         datos.append('password', password);
         datos.append('organization', organization);
         datos.append('accion', accion);
+        datos.append('imagen', imagen);
         
         //Crear el llamado a ajax
         var xhr = new XMLHttpRequest();
@@ -72,19 +76,19 @@ function validarRegistro(e) {
                 } else if(respuesta.respuesta === 'error') {
                     swal({
                         type: 'error',
-                        title: 'Email en uso',
-                        text: 'El email ya ha sido registrado'
+                        title: 'Cuenta en uso',
+                        text: 'El email o usuario ya ha sido registrado'
                     });
                 }
             } else {
-                    //hubo un error
-                    swal({
-                        type: 'error',
-                        title: 'Error en la operacion',
-                        text: 'Ha ocurrido un error en nuestros servidores, intentelo más tarde'
-                    });
-                }
+                //hubo un error
+                swal({
+                    type: 'error',
+                    title: 'Error en la operacion',
+                    text: 'Ha ocurrido un error en nuestros servidores, intentelo más tarde'
+                });
             }
+        }
         //Enviar los datos
         xhr.send(datos);
     }
@@ -93,10 +97,10 @@ function validarRegistro(e) {
 function login(e) {
     e.preventDefault();
     console.log("submit");
-    var email = document.querySelector('#email').value,
+    var nickname = document.querySelector('#nickname').value,
         password = document.querySelector('#password').value;
 
-    if(email === '' || password === '') {
+    if(nickname === '' || password === '') {
         swal({
             type: 'error',
             title: 'Campos vacíos',
@@ -106,7 +110,7 @@ function login(e) {
         //Ambos campos son correctos, mandar ejecutar ajax
         //Datos que se envian al servidor
         var datos = new FormData();
-        datos.append('email', email)
+        datos.append('nickname', nickname)
         datos.append('password', password);
         datos.append('accion', 'login');
         
