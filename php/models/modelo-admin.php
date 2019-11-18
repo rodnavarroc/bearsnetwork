@@ -44,6 +44,7 @@ if($accion === 'crear') {
             );
             $miCarpeta = "../../users/" . $nickname;
             mkdir($miCarpeta, 0777); //Crear carpeta del usuario
+            mkdir($miCarpeta . "/repositorio", 0777);//Crear la carpeta repositorio
             move_uploaded_file($img_nombre_tmp, $miCarpeta . '/' . $imagen); //Mover archivo al servidor
         } else {
             $respuesta = array(
@@ -68,11 +69,11 @@ if($accion === 'login') {
     include_once('../functions/db_connection.php');
 
     try {
-        $stmt = $conn->prepare("SELECT id, nickname, email, password, name, image FROM user INNER JOIN profile ON user.id = profile.user_id WHERE nickname = ? ");
+        $stmt = $conn->prepare("SELECT id, nickname, email, password, name, organization, image FROM user INNER JOIN profile ON user.id = profile.user_id WHERE nickname = ? ");
         $stmt->bind_param('s', $nickname);
         $stmt->execute();
 
-        $stmt->bind_result($id_usuario, $nickname_usuario,$email_usuario, $password_usuario, $name_usuario, $imagen);
+        $stmt->bind_result($id_usuario, $nickname_usuario,$email_usuario, $password_usuario, $name_usuario, $depedencia_usuario, $imagen_usuario);
         $stmt->fetch();
 
         if($email_usuario){
@@ -81,6 +82,7 @@ if($accion === 'login') {
                 //Iniciar la sesion
                 session_start();
                 $_SESSION['nickname'] = $nickname_usuario;
+                $_SESSION['dependencia'] = $dependencia_usuario;
                 $_SESSION['name'] = $name_usuario;
                 $_SESSION['email'] = $email_usuario;
                 $_SESSION['id'] = $id_usuario;

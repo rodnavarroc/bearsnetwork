@@ -1,5 +1,7 @@
 <?php
-    include 'php/functions/sessions.php';
+	include 'php/functions/sessions.php';
+	
+	
 ?>  
 <!DOCTYPE html>
 <html>
@@ -61,10 +63,10 @@
 
 		<div class="col-lg-2" style="background-color: #f2f2f2; padding: 0% 1%;">
 			<br><br>
-			<center><img src="img/perfil.png" class="img-fluid" width="50%;"></center>
+			<center><img src="<?php echo "users/" . $_SESSION['nickname'] . "/" . $_SESSION['image']; ?>" class="img-fluid" width="50%;"></center>
 			<br>
-			<h4><center>Rodolfo Navarro</center></h4>
-			<h6><center>Facultad de Ingeniería Mecánica y Eléctrica</center></h6>
+			<h4><center><?php echo $_SESSION['name']; ?></center></h4>
+			<h6><center><?php echo $_SESSION['dependencia'] ?></center></h6>
 			<br><hr><br>
 
 			<h5><center><router-link to="/notif">Notificaciones</router-link></center></h5><br>
